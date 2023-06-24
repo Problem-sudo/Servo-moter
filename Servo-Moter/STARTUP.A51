@@ -1,0 +1,65 @@
+// servo tester for +90 position i.e. 2 ms duty cycle for 20 ms wave
+
+ORG 0000H
+	SJMP START
+	
+	ORG 0035H
+		DELAY1: 
+				SETB TR0
+				CHECK: JNB TF0, CHECK
+				CLR TF0
+				CLR TR0
+				RET
+		
+	ORG 0080H
+		START: MOV TMOD, #01H
+		MOV R0 , #19
+		ONE:SETB P1.2
+		MOV TH0 , #0F8H
+		MOV TL0 , #30H
+		ACALL DELAY1
+		
+		CLR P1.2
+		MOV TH0 , #0B9H
+		MOV TL0 , #0B0H
+		ACALL DELAY1
+		DJNZ R0 , ONE
+		
+		MOV R0, #19
+		TWO:SETB P1.2
+		MOV TH0 , #0FAH
+		MOV TL0 , #24H
+		ACALL DELAY1
+		
+		CLR P1.2
+		MOV TH0 , #0B7H
+		MOV TL0 , #0BCH
+		ACALL DELAY1
+		DJNZ R0 , TWO
+		
+		MOV R0 , #19
+		THREE:SETB P1.2
+		MOV TH0 , #0FCH
+		MOV TL0 , #18H
+		ACALL DELAY1
+		
+		CLR P1.2
+		MOV TH0 , #0B5H
+		MOV TL0 , #0C8H
+		ACALL DELAY1
+		DJNZ R0, THREE
+		
+		MOV R0, #19
+		TWO2:SETB P1.2
+		MOV TH0 , #0FAH
+		MOV TL0 , #24H
+		ACALL DELAY1
+		
+		CLR P1.2
+		MOV TH0 , #0B7H
+		MOV TL0 , #0BCH
+		ACALL DELAY1
+		DJNZ R0 , TWO2
+		
+		SJMP START
+END

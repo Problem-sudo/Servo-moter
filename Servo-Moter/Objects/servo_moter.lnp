@@ -1,0 +1,3 @@
+".\Objects\STARTUP.obj" 
+TO ".\Objects\servo_moter" 
+PRINT(".\Listings\servo_moter.m51")

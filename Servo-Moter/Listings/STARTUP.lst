@@ -1,0 +1,104 @@
+A51 MACRO ASSEMBLER  STARTUP                                                              10/19/2022 12:05:12 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\STARTUP.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE STARTUP.A51 SET(SMALL) DEBUG PRINT(.\Listings\STARTUP.lst) OBJECT(.\Obj
+                      ects\STARTUP.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     
+0000                   3     ORG 0000H
+0000 807E              4             SJMP START
+                       5             
+0035                   6             ORG 0035H
+0035                   7                     DELAY1: 
+0035 D28C              8                                     SETB TR0
+0037 308DFD            9                                     CHECK: JNB TF0, CHECK
+003A C28D             10                                     CLR TF0
+003C C28C             11                                     CLR TR0
+003E 22               12                                     RET
+                      13                     
+0080                  14             ORG 0080H
+0080 758901           15                     START: MOV TMOD, #01H
+0083 7813             16                     MOV R0 , #19
+0085 D292             17                     ONE:SETB P1.2
+0087 758CF8           18                     MOV TH0 , #0F8H
+008A 758A30           19                     MOV TL0 , #30H
+008D 1135             20                     ACALL DELAY1
+                      21                     
+008F C292             22                     CLR P1.2
+0091 758CB9           23                     MOV TH0 , #0B9H
+0094 758AB0           24                     MOV TL0 , #0B0H
+0097 1135             25                     ACALL DELAY1
+0099 D8EA             26                     DJNZ R0 , ONE
+                      27                     
+009B 7813             28                     MOV R0, #19
+009D D292             29                     TWO:SETB P1.2
+009F 758CFA           30                     MOV TH0 , #0FAH
+00A2 758A24           31                     MOV TL0 , #24H
+00A5 1135             32                     ACALL DELAY1
+                      33                     
+00A7 C292             34                     CLR P1.2
+00A9 758CB7           35                     MOV TH0 , #0B7H
+00AC 758ABC           36                     MOV TL0 , #0BCH
+00AF 1135             37                     ACALL DELAY1
+00B1 D8EA             38                     DJNZ R0 , TWO
+                      39                     
+00B3 7813             40                     MOV R0 , #19
+00B5 D292             41                     THREE:SETB P1.2
+00B7 758CFC           42                     MOV TH0 , #0FCH
+00BA 758A18           43                     MOV TL0 , #18H
+00BD 1135             44                     ACALL DELAY1
+                      45                     
+00BF C292             46                     CLR P1.2
+00C1 758CB5           47                     MOV TH0 , #0B5H
+00C4 758AC8           48                     MOV TL0 , #0C8H
+00C7 1135             49                     ACALL DELAY1
+00C9 D8EA             50                     DJNZ R0, THREE
+                      51                     
+00CB 7813             52                     MOV R0, #19
+00CD D292             53                     TWO2:SETB P1.2
+00CF 758CFA           54                     MOV TH0 , #0FAH
+00D2 758A24           55                     MOV TL0 , #24H
+00D5 1135             56                     ACALL DELAY1
+                      57                     
+A51 MACRO ASSEMBLER  STARTUP                                                              10/19/2022 12:05:12 PAGE     2
+
+00D7 C292             58                     CLR P1.2
+00D9 758CB7           59                     MOV TH0 , #0B7H
+00DC 758ABC           60                     MOV TL0 , #0BCH
+00DF 1135             61                     ACALL DELAY1
+00E1 D8EA             62                     DJNZ R0 , TWO2
+                      63                     
+00E3 809B             64                     SJMP START
+                      65     END
+A51 MACRO ASSEMBLER  STARTUP                                                              10/19/2022 12:05:12 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CHECK. . . . . . .  C ADDR   0037H   A   
+DELAY1 . . . . . .  C ADDR   0035H   A   
+ONE. . . . . . . .  C ADDR   0085H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0080H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+THREE. . . . . . .  C ADDR   00B5H   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TWO. . . . . . . .  C ADDR   009DH   A   
+TWO2 . . . . . . .  C ADDR   00CDH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
